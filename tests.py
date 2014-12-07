@@ -3,9 +3,9 @@
 import hostagent
 
 
-hostname = 'http://2.2.2.2'
+hostname = 'http://10.94.140.71'
 username = 'admin'
-passwd = 'password'
+passwd = 'PASS'
 
 ctrlr = hostagent.Agent(hostname, username, passwd)
 
@@ -26,6 +26,8 @@ print "What Services is an IP is providing"
 print "=" * 40
 print "IP 192.168.10.2 is currently providing: ", ctrlr.ip_provides('192.168.10.2')
 
+print "What Services is an IP is consuming"
+print "=" * 40
 print "IP 192.168.10.2 is currently consuming:", ctrlr.ip_consumes('192.168.10.2')
 
 print "Who is providing what"
@@ -38,13 +40,17 @@ for service in ctrlr.list_services():
 
 print "What IP address are providing a service"
 print "=" * 40
-print "uni/tn-tenant1/ap-app1/epg-db has members", ctrlr.epg_endpoints('uni/tn-tenant1/ap-app1/epg-db')
+print "uni/tn-tenant1/ap-app1/epg-db has members", ctrlr.epg_endpoints('uni/tn-mgmt/ap-mgmt-applications/epg-server-management')
 
 print "IP 192.168.10.2 is currently providing: ", ctrlr.ip_provides('192.168.10.2')
 
 # # set's some sample inputs for the next section
 dn = ctrlr.endpointbyip('192.168.10.2')
 epg = ctrlr.md.lookupByDn(dn).parentDn
+
+print epg
+
+
 
 print "#### SERVICE CONSUMPTION ####"
 print "=" * 40

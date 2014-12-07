@@ -117,7 +117,7 @@ class Agent:
         """
         :param dn: dn of epg
         :param contractdn: dn of contract
-        :param svcflag: boolean add/delete fvRsProv
+        :param svcflag: boolean add/delete fvRsCons
         :return:
         """
         epg, contract = self.md.lookupByDn(dn), self.md.lookupByDn(contractdn)
@@ -144,4 +144,5 @@ class Agent:
             fvrsprov = cobra.model.fv.RsProv(epg, tnVzBrCPName=contract.name).delete()
         c1 = cobra.mit.request.ConfigRequest()
         c1.addMo(epg)
+        self.md.commit(c1)
         return fvrsprov
