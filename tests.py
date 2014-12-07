@@ -3,9 +3,9 @@
 import hostagent
 
 
-hostname = 'http://10.94.140.71'
+hostname = 'http://10.5.5.5'
 username = 'admin'
-passwd = 'PASS'
+passwd = 'password'
 
 ctrlr = hostagent.Agent(hostname, username, passwd)
 
